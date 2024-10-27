@@ -3,7 +3,7 @@
   "module": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "start": "bun run --hot src/index.tsx --port 3001",
+    "start": "bun run --hot src/index.tsx --port 3000",
     "build": "bun build ./src/index.tsx --outdir ./dist"
   },
   "dependencies": {

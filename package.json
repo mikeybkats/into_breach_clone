@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "start": "bun run --cwd server start",
-    "dev": "bun run start",
+    "dev": "NODE_ENV=development bun run --cwd server start",
     "build": "bun run --cwd client build"
   },
   "devDependencies": {

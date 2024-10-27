@@ -5,6 +5,8 @@ import { resolve } from "path";
 const PORT = process.env.PORT || 3000;
 const ROOT_DIR = resolve(__dirname, "../../");
 
+const isDev = process.env.NODE_ENV === "development";
+
 // Function to build production React app
 async function buildReactApp() {
   await build({
@@ -14,14 +16,19 @@ async function buildReactApp() {
   console.log("React build completed");
 }
 
-// Build React app
-await buildReactApp();
+async function buildIndexHtml() {
+  await Bun.write(
+    `${ROOT_DIR}/client/dist/index.html`,
+    await Bun.file(`${ROOT_DIR}/client/public/index.html`).text()
+  );
+  console.log("Writing index.html");
+}
 
-console.log("Writing index.html");
-await Bun.write(
-  `${ROOT_DIR}/client/dist/index.html`,
-  await Bun.file(`${ROOT_DIR}/client/public/index.html`).text()
-);
+if (!isDev) {
+  // Build React app
+  await buildReactApp();
+  await buildIndexHtml();
+}
 
 // watch for changes in the React app
 if (process.env.NODE_ENV === "development") {
@@ -37,8 +44,6 @@ if (process.env.NODE_ENV === "development") {
 
 // Read the index.html template from correct path
 const indexHtml = await Bun.file(`${ROOT_DIR}/client/dist/index.html`).text();
-
-const isDev = process.env.NODE_ENV === "development";
 
 const server = Bun.serve({
   port: PORT,
