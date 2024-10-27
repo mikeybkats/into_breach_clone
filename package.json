@@ -1,0 +1,20 @@
+{
+  "name": "into_the_breach_clone",
+  "module": "index.ts",
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start": "bun run --cwd server start",
+    "dev": "bun run start",
+    "build": "bun run --cwd client build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

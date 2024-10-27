@@ -1,0 +1,20 @@
+{
+  "name": "@into_the_breach_clone/client",
+  "module": "src/index.tsx",
+  "type": "module",
+  "scripts": {
+    "start": "bun run --hot src/index.tsx --port 3001",
+    "build": "bun build ./src/index.tsx --outdir ./dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "pixi.js": "^7.3.2",
+    "@reduxjs/toolkit": "^1.9.7",
+    "react-redux": "^8.1.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15"
+  }
+}
