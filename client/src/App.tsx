@@ -23,7 +23,7 @@ const App: React.FC = () => {
     <div>
       <div ref={pixiContainer} />
       <div>
-        <h1>Hello from React + Bun!</h1>
+        <h1>Hello from React & Bun & Pixi.js!</h1>
       </div>
     </div>
   );
