@@ -7,7 +7,6 @@ import App from "./App";
 if (typeof window !== "undefined" && typeof document !== "undefined") {
   const root = createRoot(document.getElementById("root") as HTMLElement);
 
-  console.log("Rendering App");
   root?.render(
     <React.StrictMode>
       <Provider store={gameStateStore}>
