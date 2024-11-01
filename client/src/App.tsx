@@ -1,30 +1,19 @@
-import React, { useEffect, useRef } from "react";
-import * as PIXI from "pixi.js";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { initializeGame } from "./state/gameSlice";
+import { GameRenderer } from "./components/GameRenderer";
+import styles from "./app.module.css";
 
 const App: React.FC = () => {
-  const pixiContainer = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (pixiContainer.current) {
-      const app = new PIXI.Application({
-        width: 800,
-        height: 600,
-        backgroundColor: 0x1099bb,
-      });
-      pixiContainer.current.appendChild(app.view as HTMLCanvasElement);
-      // Add your PIXI.js game logic here
-      return () => {
-        app.destroy(true, true);
-      };
-    }
+    dispatch(initializeGame());
   }, []);
 
   return (
-    <div>
-      <div ref={pixiContainer} />
-      <div>
-        <h1>Hello from React & Bun & Pixi.js!</h1>
-      </div>
+    <div className={styles.appContainer}>
+      <GameRenderer />
     </div>
   );
 };

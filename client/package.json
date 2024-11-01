@@ -4,14 +4,17 @@
   "type": "module",
   "scripts": {
     "start": "bun run --hot src/index.tsx --port 3000",
-    "build": "bun build ./src/index.tsx --outdir ./dist"
+    "build": "bunx --bun vite build",
+    "dev": "bunx --bun vite"
   },
   "dependencies": {
+    "vite": "^5.4.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "pixi.js": "^7.3.2",
     "@reduxjs/toolkit": "^1.9.7",
-    "react-redux": "^8.1.3"
+    "react-redux": "^8.1.3",
+    "@vitejs/plugin-react": "^4.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
