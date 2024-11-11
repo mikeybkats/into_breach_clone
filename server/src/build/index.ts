@@ -1,4 +1,3 @@
-import { build } from "bun";
 import { config } from "../config";
 
 /**
@@ -7,8 +6,11 @@ import { config } from "../config";
  * Builds the react app.
  */
 export async function buildReactApp() {
-  await build({
-    entrypoints: [`${config.ROOT_DIR}/client/src/index.tsx`],
+  await Bun.build({
+    entrypoints: [
+      `${config.ROOT_DIR}/client/src/index.tsx`,
+      `${config.ROOT_DIR}/client/src/index.css`,
+    ],
     outdir: `${config.ROOT_DIR}/client/dist`,
   });
   console.log("React build completed");

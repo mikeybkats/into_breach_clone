@@ -8,13 +8,15 @@
   ],
   "scripts": {
     "start": "bun run --cwd server start",
-    "dev": "NODE_ENV=development bun run --cwd server start",
-    "build": "bun run --cwd client build"
+    "dev-old": "NODE_ENV=development bun run --cwd server start",
+    "build": "bun run --cwd client build",
+    "dev": "bun run --cwd client dev"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "dependencies": {}
 }

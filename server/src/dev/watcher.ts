@@ -20,7 +20,12 @@ export function startDevWatcher() {
     });
 
     for await (const event of watcher) {
-      if (event.filename?.endsWith(".tsx") || event.filename?.endsWith(".ts")) {
+      console.log("File event:", event);
+      if (
+        event.filename?.endsWith(".tsx") ||
+        event.filename?.endsWith(".ts") ||
+        event.filename?.endsWith(".css")
+      ) {
         console.log("Rebuilding react app...");
         await buildReactApp();
       }

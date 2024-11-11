@@ -7,8 +7,8 @@ async function main() {
   if (config.isDev) {
     startDevWatcher();
   } else {
-    await buildReactApp();
     await buildIndexHtml();
+    await buildReactApp();
   }
 
   const server = await createServer();

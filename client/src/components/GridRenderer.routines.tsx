@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import { COLORS, SIZES } from "../constants";
-import { GameState, Tile } from "../types/game";
+import { GameState } from "../types/game";
 
 // Update gridToScreen to use dynamic tile dimensions
 const gridToScreen = (args: {

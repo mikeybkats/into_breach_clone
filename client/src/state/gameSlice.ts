@@ -14,10 +14,13 @@ export const gameSlice = createSlice({
   name: "pVc",
   initialState,
   reducers: {
-    initializeGame: (state: GameState) => {
+    initializeGame: (
+      state: GameState,
+      action: PayloadAction<{ gridSize: number }>
+    ) => {
       // create an 8x8 grid of tiles
-      state.grid = Array.from({ length: 8 }, () =>
-        Array.from({ length: 8 }, () => ({
+      state.grid = Array.from({ length: action.payload.gridSize }, () =>
+        Array.from({ length: action.payload.gridSize }, () => ({
           position: { x: 0, y: 0 },
           type: "ground",
         }))

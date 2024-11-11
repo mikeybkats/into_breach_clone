@@ -2,36 +2,31 @@ import { config } from "./config";
 import { handleSourceFiles, handleStaticFile } from "./handlers/static";
 
 export async function createServer() {
-  const indexHtml = await Bun.file(
-    `${config.ROOT_DIR}/client/dist/index.html`
-  ).text();
-
   const server = Bun.serve({
     port: config.PORT,
     async fetch(req) {
-      const path = new URL(req.url).pathname;
+      const url = new URL(req.url);
+
       console.log(
         "Requested path:",
-        path,
+        url.pathname,
         "Mode:",
         config.isDev ? "development" : "production"
       );
 
       // handle src files
-      const srcFilesResponse = await handleSourceFiles(path);
+      const srcFilesResponse = await handleSourceFiles(url.pathname);
       if (srcFilesResponse) {
         return srcFilesResponse;
       }
 
       // handle static files
-      const staticFilesResponse = await handleStaticFile(path);
+      const staticFilesResponse = await handleStaticFile(url.pathname);
       if (staticFilesResponse) {
         return staticFilesResponse;
       }
 
-      return new Response(indexHtml, {
-        headers: { "Content-Type": "text/html" },
-      });
+      return new Response("Not found", { status: 404 });
     },
   });
 
